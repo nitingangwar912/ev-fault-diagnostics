@@ -3,6 +3,10 @@ import { ChatMessage, ChatState } from '../types/chat';
 
 const SESSION_KEY = 'ev_diag_session_id';
 
+// In dev: Vite proxy forwards /api → localhost:3001
+// In production: VITE_API_URL points to the deployed Render backend
+const API_BASE = import.meta.env.VITE_API_URL ?? '';
+
 // Generate or retrieve a stable session ID from sessionStorage.
 // This persists for the browser tab lifetime — enables per-session rate limiting
 // and structured logging on the backend without requiring user auth.
@@ -73,7 +77,7 @@ export function useChat() {
     abortRef.current = new AbortController();
 
     try {
-      const response = await fetch('/api/chat/stream', {
+      const response = await fetch(`${API_BASE}/api/chat/stream`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
