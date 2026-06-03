@@ -62,7 +62,7 @@ export default function App() {
         </a>
         {' '}·{' '}
         <a
-          href="https://linkedin.com/in/nitingangwar912"
+          href="https://www.linkedin.com/in/nitingangwar912/"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: '#3b82f6', textDecoration: 'none' }}
